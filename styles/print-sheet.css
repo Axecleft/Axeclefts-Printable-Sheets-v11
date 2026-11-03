@@ -1,0 +1,105 @@
+/* Printable 3.5 SRD character sheet: US Letter, two pages, black-and-white friendly. */
+@page { margin: 0.35in; }  /* paper size comes from the printer (Letter or A4) */
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; color: #000; }
+body { font: 8.5pt/1.2 Arial, Helvetica, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 100%; max-width: 7.8in; margin: 0 auto; }
+/* page 1 flows straight into the equipment section; nothing forces a new page */
+.item, .loads, .money, .three > div, .spellbook-block, .slv, .notes-block { break-inside: avoid; page-break-inside: avoid; }
+.page + .page { margin-top: 4px; }
+@media screen { body { background: #888; } .page { background: #fff; padding: 0.35in; margin: 12px auto; box-shadow: 0 0 6px #000; max-width: 8.5in; } }
+
+/* identity */
+.ident { display: flex; gap: 8px; margin-bottom: 6px; }
+.ident-grid { flex: 1; display: grid; grid-template-columns: repeat(8, 1fr); gap: 3px 8px; }
+.f { grid-column: span 2; display: flex; flex-direction: column; }
+.f.wide { grid-column: span 4; }
+.f.s { grid-column: span 1; }
+.f .v { border-bottom: 1px solid #000; min-height: 14px; font-size: 9.5pt; }
+.f .v.big { font: bold 15pt Georgia, "Times New Roman", serif; }
+.f label, .part label, .lbl td, .cap { font-size: 5.5pt; text-transform: uppercase; color: #222; }
+.portrait { width: 1.15in; height: 1.15in; border: 2px solid #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.portrait img { max-width: 100%; max-height: 100%; }
+
+/* layout */
+.cols { display: grid; grid-template-columns: 1.25fr 1fr; gap: 10px; }
+.two, .three { display: grid; gap: 8px; }
+.two { grid-template-columns: 1fr 1.25fr; }
+.three { grid-template-columns: 1fr 1fr 1fr; }
+
+/* boxes and labels */
+.tag { background: #000; color: #fff; font: bold 11pt Georgia, serif; text-align: center; padding: 1px 4px; white-space: nowrap; }
+.tag small { display: block; font: 5pt Arial, sans-serif; text-transform: uppercase; }
+.box { border: 1.2px solid #000; text-align: center; min-width: 26px; height: 20px; padding: 2px 3px; font-size: 10pt; font-weight: bold; }
+.box.light { border-color: #888; font-weight: normal; }
+.box.w { min-width: 40px; }
+.box.wide { min-width: 90px; }
+.op { font-size: 9pt; padding: 0 1px; text-align: center; }
+table { border-collapse: separate; border-spacing: 2px; }
+.lbl td { text-align: center; }
+
+.abil .tag { width: 64px; }
+.abil .hdr th { font-size: 5.5pt; text-transform: uppercase; font-weight: normal; }
+.abil .box { width: 40px; }
+
+.combat-top { margin: 6px 0; }
+.combat-top .row { display: flex; align-items: center; gap: 3px; margin-bottom: 4px; flex-wrap: nowrap; }
+.combat-top .tag { width: 52px; }
+.part { display: flex; flex-direction: column; align-items: center; }
+.cap { margin-left: 4px; max-width: 48px; line-height: 1; }
+
+.mini .tag { width: 78px; font-size: 9.5pt; }
+.attacks { margin-top: 4px; }
+
+.item { width: 100%; border: 1.2px solid #000; border-spacing: 0; margin-top: 5px; }
+.item th { background: #000; color: #fff; font-size: 7pt; padding: 2px; text-transform: uppercase; }
+.item th.iname { text-align: left; font: bold 9pt Georgia, serif; text-transform: none; }
+.item td { text-align: center; border-top: 1px solid #000; padding: 2px; font-size: 8pt; }
+.item tr.lbl td { background: #ddd; }
+
+/* skills */
+.skills-head { background: #000; color: #fff; font: bold 12pt Georgia, serif; display: flex; justify-content: space-between; padding: 2px 6px; }
+.skills-head .ranks { font: 7pt Arial, sans-serif; align-self: center; }
+.skills { width: 100%; border-spacing: 0; }
+.skills td { border-bottom: 1px solid #bbb; padding: 0.5px 2px; text-align: center; font-size: 7.2pt; }
+.skills td.sn { text-align: left; white-space: nowrap; }
+.skills td.t { font-weight: bold; }
+.skills td.cs { width: 10px; font-size: 7pt; }
+.skills tr.dim td { color: #888; }
+.foot { font-size: 6pt; margin: 3px 0 0; }
+
+/* page 2 */
+.bar { background: #000; color: #fff; text-align: center; font: bold 9pt Georgia, serif; text-transform: uppercase; letter-spacing: 1px; padding: 2px; margin-top: 6px; }
+.gear { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.list { width: 100%; border-spacing: 0; table-layout: fixed; align-self: start; }
+.list tr.lbl td:first-child { width: 58%; }
+.list td { border-bottom: 1px solid #999; padding: 1px 2px; text-align: center; height: 13px; }
+.list td.n { text-align: left; }
+.loads { width: 100%; margin-top: 4px; }
+.loads .box { font-size: 8pt; }
+.loads th { text-align: right; font-size: 7pt; text-transform: uppercase; }
+.loads .spacer { width: 30%; }
+.money { width: 100%; border-spacing: 0; }
+.money td { border: 1px solid #000; padding: 4px; width: 25%; font-weight: bold; }
+.money td.misc { font-weight: normal; height: 32px; vertical-align: top; }
+.lines { list-style: none; margin: 0; padding: 0; border: 1px solid #000; min-height: 1in; }
+.lines li { border-bottom: 1px solid #bbb; padding: 1px 4px; }
+.notes li { height: 17px; }
+.printed { font-size: 6pt; color: #555; text-align: right; }
+
+/* spells */
+.spellbook-block { margin-top: 2px; }
+.sbhead { display: flex; justify-content: space-between; font-size: 7.5pt; padding: 2px 0; }
+.sbhead b { font: bold 9pt Georgia, serif; }
+.slots { width: 100%; border-spacing: 0; margin-bottom: 4px; }
+.slots td, .slots th { border: 1px solid #000; text-align: center; padding: 1px; font-size: 7.5pt; }
+.slots th { background: #000; color: #fff; font-size: 6.5pt; text-transform: uppercase; }
+.slots td.rowlbl { text-align: left; font-size: 6pt; text-transform: uppercase; width: 90px; background: #ddd; }
+.spelllist { columns: 4; column-gap: 6px; }
+.slv { border: 1px solid #000; margin-bottom: 5px; }
+.slvh { background: #000; color: #fff; font: bold 7.5pt Georgia, serif; padding: 1px 4px; }
+.slv ul { list-style: none; margin: 0; padding: 0 4px; }
+.slv li { border-bottom: 1px solid #ccc; padding: 1px 0; font-size: 7.5pt; }
+.slv li small { color: #444; }
+.bar { break-after: avoid; page-break-after: avoid; }
+.lines li.grp { font-weight: bold; background: #e6e6e6; font-size: 0.92em; }

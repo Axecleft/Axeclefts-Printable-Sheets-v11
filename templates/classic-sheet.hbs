@@ -1,0 +1,218 @@
+<div class="sheet classic">
+<!-- =================== PAGE 1: character, abilities, combat, skills =================== -->
+<section class="page">
+  <div class="title">Character Record <span>3.5 Edition Rules</span></div>
+  <div class="idrow">
+    <div class="fld" style="flex:3"><span>{{name}}</span><label>Character Name</label></div>
+    <div class="fld" style="flex:2"><span>&nbsp;</span><label>Player</label></div>
+  </div>
+  <div class="idrow">
+    <div class="fld" style="flex:3"><span>{{classLine}}</span><label>Class and Level</label></div>
+    <div class="fld"><span>{{race}}</span><label>Race</label></div>
+    <div class="fld"><span>{{alignment}}</span><label>Alignment</label></div>
+    <div class="fld"><span>{{deity}}</span><label>Deity</label></div>
+  </div>
+  <div class="idrow">
+    <div class="fld"><span>{{size}}</span><label>Size</label></div>
+    <div class="fld"><span>{{age}}</span><label>Age</label></div>
+    <div class="fld"><span>{{gender}}</span><label>Gender</label></div>
+    <div class="fld"><span>{{height}}</span><label>Height</label></div>
+    <div class="fld"><span>{{weight}}</span><label>Weight</label></div>
+    <div class="fld"><span>&nbsp;</span><label>Eyes</label></div>
+    <div class="fld"><span>&nbsp;</span><label>Hair</label></div>
+    <div class="fld"><span>&nbsp;</span><label>Skin</label></div>
+  </div>
+
+  <div class="top">
+    <table class="abil">
+      <tr class="lbl"><td>Ability<br>Name</td><td>Ability<br>Score</td><td>Ability<br>Modifier</td><td>Temporary<br>Score</td><td>Temporary<br>Modifier</td></tr>
+      {{#each abilities}}
+      <tr><th class="tab">{{abbr}}<small>{{label}}</small></th><td class="b">{{score}}</td><td class="b">{{mod}}</td><td class="b t">{{tempScore}}</td><td class="b t">{{tempMod}}</td></tr>
+      {{/each}}
+    </table>
+
+    <div class="vitals">
+      <div class="line">
+        <div class="tab">HP<small>Hit Points</small></div>
+        <div class="cell"><div class="b big">{{hp.max}}</div><label>Total</label></div>
+        <div class="cell grow"><div class="b wide t">&nbsp;</div><label>Wounds / Current HP</label></div>
+        <div class="cell"><div class="b t">{{hp.nonlethal}}</div><label>Nonlethal Damage</label></div>
+        <div class="cell"><div class="b">{{speed}}</div><label>Speed</label></div>
+      </div>
+      <div class="line">
+        <div class="tab">AC<small>Armor Class</small></div>
+        <div class="cell"><div class="b big">{{ac.total}}</div><label>Total</label></div><span class="op">= 10 +</span>
+        <div class="cell"><div class="b">{{ac.armor}}</div><label>Armor Bonus</label></div><span class="op">+</span>
+        <div class="cell"><div class="b">{{ac.shield}}</div><label>Shield Bonus</label></div><span class="op">+</span>
+        <div class="cell"><div class="b">{{ac.dex}}</div><label>Dex Modifier</label></div><span class="op">+</span>
+        <div class="cell"><div class="b">{{ac.size}}</div><label>Size Modifier</label></div><span class="op">+</span>
+        <div class="cell"><div class="b">{{ac.natural}}</div><label>Natural Armor</label></div><span class="op">+</span>
+        <div class="cell"><div class="b t">&nbsp;</div><label>Deflection Modifier</label></div><span class="op">+</span>
+        <div class="cell"><div class="b">{{ac.misc}}</div><label>Misc Modifier</label></div>
+      </div>
+      <div class="line">
+        <div class="tab sm">Touch<small>Armor Class</small></div><div class="b">{{ac.touch}}</div>
+        <div class="tab sm">Flat-Footed<small>Armor Class</small></div><div class="b">{{ac.flatFooted}}</div>
+        <div class="cell grow"><div class="b wide">{{dr}}</div><label>Damage Reduction</label></div>
+      </div>
+      <div class="line">
+        <div class="tab">Initiative<small>Modifier</small></div>
+        <div class="cell"><div class="b big">{{init.total}}</div><label>Total</label></div><span class="op">=</span>
+        <div class="cell"><div class="b">{{init.dex}}</div><label>Dex Modifier</label></div><span class="op">+</span>
+        <div class="cell"><div class="b">{{init.misc}}</div><label>Misc Modifier</label></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="left">
+      <table class="saves">
+        <tr class="lbl"><td>Saving Throws</td><td>Total</td><td></td><td>Base<br>Save</td><td></td><td>Ability<br>Modifier</td><td></td><td>Magic<br>Modifier</td><td></td><td>Misc<br>Modifier</td><td></td><td>Temporary<br>Modifier</td></tr>
+        {{#each saves}}
+        <tr><th class="tab">{{label}}<small>({{ability}})</small></th><td class="b big">{{total}}</td><td class="op">=</td><td class="b">{{base}}</td><td class="op">+</td>
+            <td class="b">{{mod}}</td><td class="op">+</td><td class="b t">&nbsp;</td><td class="op">+</td><td class="b">{{misc}}</td><td class="op">+</td><td class="b t">&nbsp;</td></tr>
+        {{/each}}
+      </table>
+      <div class="cond">Conditional modifiers:</div>
+
+      <div class="line atk">
+        <div class="tab">Base Attack<small>Bonus</small></div><div class="b wide">{{bab}}</div>
+        <div class="tab">Spell<small>Resistance</small></div><div class="b">{{sr}}</div>
+      </div>
+      {{#with grapple}}
+      <div class="line atk">
+        <div class="tab">Grapple<small>Modifier</small></div>
+        <div class="cell"><div class="b big">{{total}}</div><label>Total</label></div><span class="op">=</span>
+        <div class="cell"><div class="b">{{bab}}</div><label>Base Attack Bonus</label></div><span class="op">+</span>
+        <div class="cell"><div class="b">{{ability}}</div><label>Strength Modifier</label></div><span class="op">+</span>
+        <div class="cell"><div class="b">{{size}}</div><label>Size Modifier</label></div><span class="op">+</span>
+        <div class="cell"><div class="b">{{misc}}</div><label>Misc Modifier</label></div>
+      </div>
+      {{/with}}
+
+      {{#each weaponBlocks}}
+      <table class="weapon">
+        <tr class="lbl"><td class="nm">Attack</td><td>Total Attack Bonus</td><td>Damage</td><td>Critical</td></tr>
+        <tr><td class="nm v">{{#unless blank}}{{name}}{{/unless}}</td><td class="v">{{attack}}</td><td class="v">{{damage}}</td><td class="v">{{critical}}</td></tr>
+        <tr class="lbl"><td>Range</td><td>Type</td><td colspan="2">Notes</td></tr>
+        <tr><td class="v">{{range}}</td><td class="v">{{type}}</td><td class="v" colspan="2">{{special}}</td></tr>
+        <tr><td class="ammo" colspan="4">Ammunition <span class="ticks">&#9633;&#9633;&#9633;&#9633;&#9633; &#9633;&#9633;&#9633;&#9633;&#9633; &#9633;&#9633;&#9633;&#9633;&#9633; &#9633;&#9633;&#9633;&#9633;&#9633;</span></td></tr>
+      </table>
+      {{/each}}
+    </div>
+
+    <div class="right">
+      <div class="sechead">Skills <span>Max Ranks {{maxRanks}} / {{maxCrossRanks}}</span></div>
+      <table class="skills">
+        <tr class="lbl"><td>Class<br>Skill</td><td class="sn">Skill Name</td><td>Key<br>Ability</td><td>Skill<br>Modifier</td><td></td><td>Ability<br>Modifier</td><td></td><td>Ranks</td><td></td><td>Misc<br>Modifier</td></tr>
+        {{#each skills}}
+        <tr class="{{#if untrainedNoUse}}dim{{/if}}"><td>{{#if classSkill}}&#9632;{{else}}&#9633;{{/if}}</td>
+          <td class="sn">{{name}}{{#if trainedOnly}}<sup>&#9670;</sup>{{/if}}{{#if acp}}*{{/if}}</td><td>{{ability}}</td>
+          <td class="tot">{{total}}</td><td class="op">=</td><td>{{abilityMod}}</td><td class="op">+</td><td>{{rank}}</td><td class="op">+</td><td>{{misc}}</td></tr>
+        {{/each}}
+      </table>
+      <p class="foot">&#9670; Skill can be used only if the character has at least 1 rank. * Armor check penalty applies (double for Swim).</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PAGE 2: protection, possessions, feats, abilities =================== -->
+<section class="page">
+  <div class="cols2">
+    <div>
+      {{#each protectionBlocks}}
+      <table class="prot">
+        <tr class="lbl"><td class="nm">{{#if blank}}Armor / Protective Item{{else}}{{kind}}{{/if}}</td><td>Type</td><td>AC Bonus</td><td>Max Dex</td></tr>
+        <tr><td class="nm v">{{name}}</td><td class="v">{{type}}</td><td class="v">{{bonus}}</td><td class="v">{{maxDex}}</td></tr>
+        <tr class="lbl"><td>Check Penalty</td><td>Spell Failure</td><td>Speed</td><td>Weight</td></tr>
+        <tr><td class="v">{{checkPenalty}}</td><td class="v">{{spellFailure}}</td><td class="v">{{speed}}</td><td class="v">{{weight}}</td></tr>
+        <tr><td class="v sp" colspan="4"><label>Special Properties</label></td></tr>
+      </table>
+      {{/each}}
+    </div>
+    <div>
+      <div class="sechead">Possessions</div>
+      <div class="poss">
+        <table class="list"><tr class="lbl"><td class="nm">Item</td><td>Qty</td><td>Wt.</td></tr>
+          {{#each gearLines}}<tr><td class="nm">{{name}}</td><td>{{#unless blank}}{{qty}}{{/unless}}</td><td>{{weight}}</td></tr>{{/each}}
+        </table>
+      </div>
+      <div class="line tw"><span>Total Weight Carried</span><div class="b wide">{{carried}} lb.</div></div>
+    </div>
+  </div>
+
+  <table class="load">
+    <tr><td class="b">{{loads.light}} lb.</td><td class="b">{{loads.medium}} lb.</td><td class="b">{{loads.heavy}} lb.</td>
+        <td class="b">{{lifts.overHead}} lb.</td><td class="b">{{lifts.offGround}} lb.</td><td class="b">{{lifts.drag}} lb.</td></tr>
+    <tr class="lbl"><td>Light Load</td><td>Medium Load</td><td>Heavy Load</td><td>Lift Over Head<br>(= max load)</td><td>Lift Off Ground<br>(2 × max load)</td><td>Push or Drag<br>(5 × max load)</td></tr>
+  </table>
+
+  <div class="cols3">
+    <div><div class="sechead">Feats</div><ul class="lines">{{#each featLines}}<li>{{name}}&nbsp;</li>{{/each}}</ul></div>
+    <div><div class="sechead">Special Abilities</div><ul class="lines">{{#each featureLines}}<li{{#if header}} class="grp"{{/if}}>{{name}}&nbsp;</li>{{/each}}</ul></div>
+    <div>
+      <div class="sechead">Languages</div><ul class="lines">{{#each languageLines}}<li>{{name}}&nbsp;</li>{{/each}}</ul>
+      <div class="sechead">Money</div>
+      <table class="money"><tr><th>CP</th><td>{{money.cp}}</td></tr><tr><th>SP</th><td>{{money.sp}}</td></tr>
+        <tr><th>GP</th><td>{{money.gp}}</td></tr><tr><th>PP</th><td>{{money.pp}}</td></tr></table>
+      <div class="sechead">Experience Points</div>
+      <div class="xp"><div class="b wide">{{xp}}</div><label>Next level: {{xpNext}}</label></div>
+    </div>
+  </div>
+</section>
+
+{{#if isCaster}}
+<!-- =================== PAGE 3: spells (casters only); each spellbook starts its own page =================== -->
+{{#each spellbooks}}
+{{#each spellPages}}
+<section class="page">
+  {{#if first}}
+  {{#if ../psionic}}
+  <div class="sechead">{{../name}} <span>Manifester level {{../casterLevel}} &middot; {{../ability}} {{../abilityMod}}{{#if ../concentration}} &middot; Concentration {{../concentration}}{{/if}}</span></div>
+  <div class="spelltop">
+    <table class="slots">
+      <tr class="lbl"><td>Powers<br>Known</td><td>Power<br>Save DC</td><td>Level</td><td>Power<br>Point Cost</td></tr>
+      {{#each ../psiLevels}}
+      <tr><td class="b">{{known}}</td><td class="b">{{dc}}</td><td class="lv">{{level}}</td><td class="b">{{ppCost}}</td></tr>
+      {{/each}}
+    </table>
+    <div class="spellnotes">
+      <div class="line"><span class="tab sm">Power Points<small>per day</small></span><div class="b big">{{../powerPoints}}</div><div class="cell grow"><div class="b t">&nbsp;</div><label>Points left</label></div></div>
+      <div class="fld"><span>{{../powersKnown}} powers known, up to level {{../maxPowerLevel}}</span><label>Powers Known</label></div>
+      <div class="fld"><span>&nbsp;</span><label>Discipline / Conditional Modifiers</label></div>
+    </div>
+  </div>
+  {{else}}
+  <div class="sechead">{{../name}} <span>Caster level {{../casterLevel}} &middot; {{../ability}} {{../abilityMod}}{{#if ../concentration}} &middot; Concentration {{../concentration}}{{/if}}{{#if ../spontaneous}} &middot; Spontaneous{{/if}}</span></div>
+  <div class="spelltop">
+    <table class="slots">
+      <tr class="lbl"><td>Spells<br>Known</td><td>Spell<br>Save DC</td><td>Level</td><td>Spells<br>per Day</td><td>Bonus<br>Spells</td></tr>
+      {{#each ../levels}}
+      <tr><td class="b">{{known}}</td><td class="b">{{dc}}</td><td class="lv">{{level}}</td><td class="b">{{perDay}}</td><td class="b">{{bonus}}</td></tr>
+      {{/each}}
+    </table>
+    <div class="spellnotes">
+      <div class="fld"><span>&nbsp;</span><label>Domains / Specialty School</label></div>
+      <div class="fld"><span>&nbsp;</span><label>Conditional Modifiers</label></div>
+      <div class="fld"><span>{{@root.spellFailure}}%</span><label>Arcane Spell Failure</label></div>
+    </div>
+  </div>
+  {{/if}}
+  {{else}}
+  <div class="sechead">{{../name}} <span>continued</span></div>
+  {{/if}}
+  <div class="spellcols">
+    {{#each columns}}
+    <div class="spellcol">
+      {{#each this}}
+      <div class="slv"><div class="slvh">Level {{level}}{{#if cont}} <span class="cont">(continued)</span>{{/if}}</div>
+        <ul>{{#each lines}}<li>{{#if blank}}&nbsp;{{else}}&#9633; {{name}}{{#if prepared}} &times;{{prepared}}{{/if}}{{/if}}</li>{{/each}}</ul></div>
+      {{/each}}
+    </div>
+    {{/each}}
+  </div>
+</section>
+{{/each}}
+{{/each}}
+{{/if}}
+</div>

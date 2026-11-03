@@ -1,0 +1,51 @@
+<div class="sheet monster">
+<section class="page">
+  <h1 class="mname">{{name}}</h1>
+  <div class="mtop">
+    <div class="statcol">
+      <div class="typeline">{{typeLine}}</div>
+      <table class="stat">
+        <tr><th>Hit Dice:</th><td>{{hitDice}}</td></tr>
+        <tr><th>Initiative:</th><td>{{initiative}}</td></tr>
+        <tr><th>Speed:</th><td>{{speedLine}}</td></tr>
+        <tr><th>Armor Class:</th><td>{{acLine}}</td></tr>
+        <tr><th>Base Attack/Grapple:</th><td>{{babGrapple}}</td></tr>
+        <tr><th>Attack:</th><td>{{attackLine}}</td></tr>
+        <tr><th>Full Attack:</th><td>{{fullAttackLine}}</td></tr>
+        <tr><th>Space/Reach:</th><td>{{spaceReach}}</td></tr>
+        <tr><th>Special Attacks:</th><td>{{specialAttacks}}</td></tr>
+        <tr><th>Special Qualities:</th><td>{{specialQualities}}</td></tr>
+        <tr><th>Saves:</th><td>{{savesLine}}</td></tr>
+        <tr><th>Abilities:</th><td>{{abilitiesLine}}</td></tr>
+        <tr><th>Skills:</th><td>{{skillsLine}}</td></tr>
+        <tr><th>Feats:</th><td>{{featsLine}}</td></tr>
+        <tr><th>Languages:</th><td>{{languagesLine}}</td></tr>
+      </table>
+      <table class="stat eco">
+        <tr><th>Environment:</th><td>{{environment}}</td></tr>
+        <tr><th>Organization:</th><td>{{organization}}</td></tr>
+        <tr><th>Challenge Rating:</th><td>{{cr}}</td></tr>
+        <tr><th>Treasure:</th><td>{{treasure}}</td></tr>
+        <tr><th>Alignment:</th><td>{{alignmentLine}}</td></tr>
+        <tr><th>Advancement:</th><td>{{advancement}}</td></tr>
+        <tr><th>Level Adjustment:</th><td>{{levelAdjustment}}</td></tr>
+      </table>
+    </div>
+    {{#if img}}<div class="mportrait"><img src="{{img}}" alt=""></div>{{/if}}
+  </div>
+
+  {{{companionBox}}}
+
+  {{#if isCaster}}
+  {{#each spellbooks}}
+  <div class="mspells"><b>{{name}}</b> (CL {{casterLevel}}):
+    {{#each activeLevels}}<span class="slvl"><b>{{level}}{{#if perDay}} ({{perDay}}/day){{/if}}</b>&mdash;{{#each spells}}{{name}}{{#unless @last}}, {{/unless}}{{else}}&nbsp;{{/each}}{{#if spells.length}} (DC {{dc}}){{/if}}</span>{{/each}}
+  </div>
+  {{/each}}
+  {{/if}}
+
+  {{#if description}}<div class="mdesc">{{{description}}}</div>{{/if}}
+  {{#if notes}}<div class="mdesc notes">{{{notes}}}</div>{{/if}}
+  <p class="printed">Printed {{printedOn}} from Foundry VTT</p>
+</section>
+</div>

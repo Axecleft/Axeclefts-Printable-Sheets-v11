@@ -1,0 +1,40 @@
+/* Monster Manual-style stat block. Paper size comes from the printer (Letter or A4). */
+@page { margin: 0.5in; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; color: #000; }
+body { font: 9.5pt/1.3 Georgia, "Times New Roman", serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 100%; max-width: 7.5in; margin: 0 auto; }
+@media screen { body { background: #888; } .page { background: #fff; padding: 0.5in; margin: 12px auto; box-shadow: 0 0 6px #000; max-width: 8.5in; min-height: 11in; } }
+
+.mname { font: normal 20pt Arial, Helvetica, sans-serif; text-transform: uppercase; letter-spacing: 1px; text-align: right;
+         margin: 0 0 6px; padding-bottom: 2px; border-bottom: 3px solid #000; }
+.mtop { display: flex; gap: 14px; align-items: flex-start; }
+.statcol { flex: 1; }
+.typeline { font-weight: bold; margin-bottom: 3px; }
+.stat { width: 100%; border-collapse: collapse; }
+.stat th { text-align: left; vertical-align: top; white-space: nowrap; width: 1.45in; padding: 1px 8px 1px 0; font-weight: bold; }
+.stat td { vertical-align: top; padding: 1px 0; }
+.stat tr { break-inside: avoid; }
+.eco { margin-top: 6px; border-top: 1.5px solid #000; padding-top: 3px; }
+.eco td { min-width: 3in; border-bottom: 1px dotted #999; }
+.mportrait { width: 2.3in; border: 1px solid #000; }
+.mportrait img { width: 100%; display: block; }
+
+.mspells { margin-top: 8px; break-inside: avoid; }
+.mspells .slvl { display: block; padding-left: 14px; text-indent: -10px; }
+.mdesc { margin-top: 10px; text-align: justify; }
+.mdesc p { margin: 0 0 6px; text-indent: 14px; }
+.mdesc h1, .mdesc h2, .mdesc h3 { font: 12pt Arial, sans-serif; text-transform: uppercase; margin: 10px 0 4px; }
+.mdesc table { border-collapse: collapse; margin: 4px 0; }
+.mdesc td, .mdesc th { border: 1px solid #999; padding: 1px 4px; }
+.printed { font: 6pt Arial, sans-serif; color: #555; text-align: right; margin-top: 10px; }
+
+/* Companion box (familiars, animal companions, special mounts) */
+.comp { border: 2px solid #000; margin-top: 10px; padding: 6px 10px 8px; break-inside: avoid; }
+.comp .ch { font: bold 10pt Arial, Helvetica, sans-serif; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #000; margin-bottom: 4px; }
+.comp table.adv { border-collapse: collapse; margin: 4px 0; }
+.comp table.adv th, .comp table.adv td { border: 1px solid #000; padding: 1px 6px; text-align: center; font-size: 8.5pt; }
+.comp table.adv th { background: #e4e4e4; font: bold 7pt Arial, sans-serif; }
+.comp dl { margin: 4px 0; } .comp dt { font-weight: bold; display: inline; } .comp dd { display: inline; margin: 0; } .comp dd::after { content: ""; display: block; margin-bottom: 2px; }
+.comp .tricks { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px 14px; font-size: 8.5pt; margin-bottom: 4px; } .comp .tricks div { border-bottom: 1px dotted #888; min-height: 14px; }
+.comp .cnotes { margin-top: 4px; } .comp .nline { border-top: 1px dotted #888; height: 0.26in; }

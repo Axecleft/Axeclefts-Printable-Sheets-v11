@@ -1,0 +1,103 @@
+/* Classic 3.5-style printable sheet: US Letter, black-and-white friendly. */
+@page { margin: 0.3in; }  /* paper size comes from the printer (Letter or A4) */
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; color: #000; }
+body { font: 7.5pt/1.15 Arial, Helvetica, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 100%; max-width: 7.9in; margin: 0 auto; page-break-after: always; break-after: page; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+@media screen { body { background: #888; } .page { background: #fff; padding: 0.3in; margin: 12px auto; box-shadow: 0 0 6px #000; max-width: 8.5in; min-height: 11in; } }
+
+table { border-collapse: separate; border-spacing: 2px; }
+label, .lbl td { font-size: 5.2pt; text-transform: uppercase; text-align: center; color: #111; line-height: 1.05; }
+.op { font-size: 8pt; text-align: center; padding: 0 1px; }
+
+.title { font: bold 16pt Georgia, "Times New Roman", serif; letter-spacing: 1px; border-bottom: 3px double #000; margin-bottom: 4px; }
+.title span { float: right; font: italic 8pt Georgia, serif; margin-top: 9px; }
+.idrow { display: flex; gap: 8px; margin-bottom: 2px; }
+.fld { flex: 1; display: flex; flex-direction: column; }
+.fld span { border-bottom: 1px solid #000; min-height: 13px; font-size: 9pt; padding-left: 2px; }
+.fld label { text-align: left; }
+.idrow:first-of-type .fld span { font: bold 12pt Georgia, serif; }
+
+/* black label tabs and number boxes */
+.tab { background: #000; color: #fff; font: bold 10.5pt Georgia, serif; text-align: center; padding: 1px 4px; border-radius: 3px; white-space: nowrap; min-width: 60px; }
+.tab small { display: block; font: 4.8pt Arial, sans-serif; text-transform: uppercase; letter-spacing: .3px; }
+.tab.sm { font-size: 8pt; min-width: 58px; }
+.b { border: 1.3px solid #000; border-radius: 3px; text-align: center; min-width: 26px; height: 19px; padding: 2px 3px; font-size: 9.5pt; font-weight: bold; }
+.b.big { min-width: 34px; font-size: 11pt; border-width: 2px; }
+.b.wide { min-width: 80px; }
+.b.t { border-color: #777; border-style: dashed; font-weight: normal; }
+.cell { display: flex; flex-direction: column; align-items: center; }
+.cell label { max-width: 52px; }
+.cell.grow { flex: 1; }
+.cell.grow .b { width: 100%; }
+.line { display: flex; align-items: flex-start; gap: 3px; margin-bottom: 4px; }
+.line .tab { margin-top: 0; }
+
+.top { display: flex; gap: 10px; margin-top: 6px; }
+.abil .tab { width: 70px; }
+.abil .b { width: 38px; }
+.vitals { flex: 1; }
+
+.cols { display: grid; grid-template-columns: 1.05fr 1fr; gap: 10px; margin-top: 4px; }
+.saves .tab { width: 70px; font-size: 9pt; }
+.saves .b { min-width: 24px; }
+.cond { border: 1px solid #000; height: 22px; padding: 2px; font-size: 6pt; text-transform: uppercase; margin-bottom: 5px; }
+.atk { margin-top: 2px; }
+
+.weapon, .prot { width: 100%; border: 1.5px solid #000; border-radius: 4px; border-spacing: 0; margin-top: 5px; }
+.weapon td, .prot td { border-right: 1px solid #000; border-bottom: 1px solid #000; padding: 1px 3px; }
+.weapon td:last-child, .prot td:last-child { border-right: 0; }
+.weapon tr.lbl td, .prot tr.lbl td { background: #000; color: #fff; }
+.weapon td.v, .prot td.v { height: 17px; text-align: center; font-size: 8.5pt; }
+.weapon td.nm, .prot td.nm { width: 40%; text-align: left; }
+.weapon td.nm.v, .prot td.nm.v { font-weight: bold; }
+.weapon tr:last-child td { border-bottom: 0; }
+.ammo { font-size: 5.5pt; text-transform: uppercase; }
+.ammo .ticks { font-size: 7pt; letter-spacing: -1px; margin-left: 4px; }
+.prot td.sp { height: 24px; text-align: left; vertical-align: top; }
+.prot td.sp label { text-align: left; display: block; }
+
+.sechead { background: #000; color: #fff; font: bold 10pt Georgia, serif; padding: 2px 6px; border-radius: 3px; margin-top: 6px; }
+.sechead span { float: right; font: 7pt Arial, sans-serif; margin-top: 2px; }
+.skills { width: 100%; border-spacing: 0; }
+.skills td { text-align: center; border-bottom: 1px solid #bbb; padding: 0.4px 1px; font-size: 7pt; }
+.skills td.sn { text-align: left; white-space: nowrap; }
+.skills td.tot { font-weight: bold; border: 1px solid #000; }
+.skills td.op { border-bottom-color: transparent; font-size: 6pt; }
+.skills tr.lbl td { border-bottom: 1px solid #000; }
+.skills tr.dim td { color: #888; }
+.foot { font-size: 5.5pt; margin: 2px 0 0; }
+
+/* page 2 */
+.cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cols3 { display: grid; grid-template-columns: 1fr 1fr 0.8fr; gap: 10px; }
+.poss .list { width: 100%; border-spacing: 0; border: 1.5px solid #000; }
+.list td { border-bottom: 1px solid #bbb; height: 14.5px; padding: 0 3px; text-align: center; }
+.list td.nm { text-align: left; width: 74%; }
+.tw { justify-content: flex-end; align-items: center; margin-top: 3px; }
+.tw span { font-size: 6pt; text-transform: uppercase; font-weight: bold; }
+.load { width: 100%; margin-top: 6px; }
+.load .b { font-size: 8.5pt; }
+.lines { list-style: none; margin: 0; padding: 0; border: 1.5px solid #000; border-top: 0; }
+.lines li { border-bottom: 1px solid #bbb; height: 15px; padding: 1px 4px; white-space: nowrap; overflow: hidden; }
+.money { width: 100%; border-spacing: 0; border: 1.5px solid #000; }
+.money th { width: 30px; border-bottom: 1px solid #bbb; text-align: left; padding: 2px 4px; }
+.money td { border-bottom: 1px solid #bbb; font-weight: bold; }
+.xp { display: flex; align-items: center; gap: 6px; margin-top: 3px; }
+
+/* page 3: spells */
+.spelltop { display: flex; gap: 12px; margin-top: 4px; }
+.slots .b { width: 40px; }
+.slots td.lv { font: bold 11pt Georgia, serif; text-align: center; width: 28px; }
+.spellnotes { flex: 1; display: flex; flex-direction: column; gap: 10px; padding-top: 14px; }
+.spellcols { display: flex; gap: 10px; margin-top: 6px; align-items: flex-start; }
+.spellcol { flex: 1 1 0; min-width: 0; }
+.slvh .cont { font: italic 7pt Georgia, serif; }
+.slv { break-inside: avoid; border: 1.5px solid #000; border-radius: 3px; margin-bottom: 6px; }
+.slvh { background: #000; color: #fff; font: bold 8pt Georgia, serif; padding: 1px 4px; }
+.slv ul { list-style: none; margin: 0; padding: 0 4px; }
+.slv li { border-bottom: 1px solid #ccc; height: 14px; white-space: nowrap; overflow: hidden; }
+
+.weapon, .prot, .slv, .load { break-inside: avoid; page-break-inside: avoid; }
+.lines li.grp { font-weight: bold; background: #e6e6e6; font-size: 0.92em; }

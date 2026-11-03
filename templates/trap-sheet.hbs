@@ -1,0 +1,14 @@
+<div class="sheet ledger">
+<section class="page">
+  <h1 class="mname">{{title}}</h1>
+  {{#if subLine}}<div class="sub">{{subLine}}</div>{{/if}}
+  {{#each traps}}
+  <div class="trap">
+    <div class="tl"><b>{{name}}:</b> {{line}}{{#if price}} <i>{{price}}</i>{{/if}}</div>
+    {{#if hasExtra}}<div class="extra">{{#each extra}}<p>{{this}}</p>{{/each}}{{#if description}}<p><i>{{description}}</i></p>{{/if}}</div>{{/if}}
+    <div class="ticks"><span>Found</span><span>Disabled</span><span>Sprung</span><span>Reset</span></div>
+  </div>
+  {{/each}}
+  <p class="printed">Printed {{printedOn}} from Foundry VTT</p>
+</section>
+</div>

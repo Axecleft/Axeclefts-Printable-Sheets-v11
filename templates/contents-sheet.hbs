@@ -1,0 +1,52 @@
+<div class="sheet ledger">
+<section class="page">
+  <h1 class="mname">{{name}}</h1>
+  <div class="sub">{{kindLabel}}{{#if status}} &middot; {{status}}{{/if}}</div>
+  {{#if img}}<div class="top"><div class="facts"></div><div class="portrait"><img src="{{img}}" alt=""></div></div>{{/if}}
+
+  {{#if settings.length}}
+  <div class="gm"><div class="gmh">GM: {{#if hoard}}hoard{{else}}settings{{/if}}</div>
+    <table class="stat">{{#each settings}}<tr><th>{{this.[0]}}</th><td>{{this.[1]}}</td></tr>{{/each}}</table>
+  </div>
+  {{/if}}
+
+  {{#if closedNote}}<p><i>{{closedNote}}</i></p>{{/if}}
+
+  {{#if coins.length}}
+  <h2>Coins</h2>
+  <div class="coins">{{#each coins}}<span><b>{{count}}</b> {{coin}}</span>{{/each}}{{#if coinsTotal}}<span class="muted">({{coinsTotal}})</span>{{/if}}</div>
+  {{/if}}
+
+  {{#unless closedNote}}
+  <h2>Contents</h2>
+  {{#if groups.length}}
+  <table class="list">
+    {{#if gm}}<tr><th>Item</th><th class="n">Qty</th><th class="n">Value each</th><th class="n">Total</th>{{#if hoard}}<th class="n">Sells for</th>{{/if}}<th class="n">Weight</th></tr>
+    {{else}}<tr><th>Item</th><th class="n">Qty</th>{{#if takenBy}}<th>Taken by</th>{{/if}}</tr>{{/if}}
+    {{#each groups}}
+      <tr class="group"><td colspan="{{../cols}}">{{label}}</td></tr>
+      {{#each rows}}
+      {{#if ../../gm}}
+      <tr><td>{{name}}{{#if shownAs}} <span class="muted">(shown as {{shownAs}})</span>{{/if}}{{#if hidden}} <span class="tag">hidden</span>{{/if}}</td>
+        <td class="n">{{qty}}</td><td class="n">{{value}}</td><td class="n">{{total}}</td>{{#if ../../hoard}}<td class="n">{{sells}}</td>{{/if}}<td class="n">{{weight}}</td></tr>
+      {{else}}
+      <tr><td>{{name}}</td><td class="n">{{qty}}</td>{{#if ../../takenBy}}<td></td>{{/if}}</tr>
+      {{/if}}
+      {{/each}}
+    {{/each}}
+    {{#each totals}}<tr class="total"><td colspan="{{#if ../hoard}}4{{else}}3{{/if}}">{{this.[0]}}</td><td class="n"{{#if ../hoard}} colspan="2"{{/if}}>{{this.[1]}}</td>{{#unless ../hoard}}<td class="n">{{this.[2]}}</td>{{/unless}}</tr>{{#if ../hoard}}{{#if this.[2]}}<tr><td colspan="6" class="n muted">{{this.[2]}}</td></tr>{{/if}}{{/if}}{{/each}}
+  </table>
+  {{else}}<p class="muted">It's empty.</p>{{/if}}
+  {{/unless}}
+
+  {{#if log.length}}
+  <h2>Log</h2>
+  <table class="list"><tr><th>When</th><th>What</th></tr>
+    {{#each log}}<tr><td class="n">{{when}}</td><td>{{#if secret}}<span class="tag">secret</span> {{/if}}{{text}}</td></tr>{{/each}}
+  </table>
+  {{/if}}
+
+  {{#if shareLines.length}}<h2>Who takes what</h2>{{#each shareLines}}<div class="notes"></div>{{/each}}{{/if}}
+  <p class="printed">Printed {{printedOn}} from Foundry VTT</p>
+</section>
+</div>

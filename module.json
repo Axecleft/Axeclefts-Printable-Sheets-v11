@@ -1,0 +1,34 @@
+{
+  "id": "axeclefts-printable-sheets",
+  "title": "Axecleft's Printable Sheets",
+  "description": "Print 3.5 SRD (D35E) actors on paper: characters as a classic 3.5 or eTools-style character sheet or a Monster Manual-style stat block; merchants as a price list (the GM's copy with the full stock and shop settings); loot piles, party storage and Hoard Editor hoards as a contents list (the GM's with values, lock and trap); traps as DMG-style trap blocks; familiars, animal companions and special mounts as a stat block with their master and advancement. Adds a Print button to actor sheets and print entries to the Actors sidebar menu.",
+  "version": "1.11.0.0",
+  "url": "https://github.com/Axecleft/Axeclefts-Printable-Sheets-v11",
+  "manifest": "https://github.com/Axecleft/Axeclefts-Printable-Sheets-v11/releases/latest/download/module.json",
+  "download": "https://github.com/Axecleft/Axeclefts-Printable-Sheets-v11/releases/download/1.11.0.0/module.zip",
+  "authors": [
+    {
+      "name": "Axecleft"
+    }
+  ],
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11.315",
+    "maximum": "11"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "D35E",
+        "type": "system",
+        "compatibility": {
+          "minimum": "2.4.3"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "languages": []
+}
